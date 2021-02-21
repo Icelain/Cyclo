@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"strings"
 	"os"
-	"./checks"
-	"./candy"
-	"./parser"
+	"github.com/icelain/cyclo/checks"
+	"github.com/icelain/cyclo/candy"
+	"github.com/icelain/cyclo/parser"
 )
 
 var (
