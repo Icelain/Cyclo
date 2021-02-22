@@ -43,7 +43,6 @@ func main(){
 	}
 
 	parser.ParseData(&f)
-	parser.RefParse(&f)
 
 	cse <- true
 	fmt.Println("\n"+checks.CheckWikipediaErrs(f,os.Args[1]))

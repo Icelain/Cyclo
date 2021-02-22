@@ -27,7 +27,9 @@ func ParseData(data *string){
 
 	re3 := regexp.MustCompile(`\[([^\[\]]*)\]`)
 	*data = re3.ReplaceAllLiteralString(*data, "")
-	
+
+	RefParse(data)
+
 }
 
 func ParsePage(root *soup.Root) string{
