@@ -3,6 +3,7 @@ package parser
 import (
 	"regexp"
 	"strings"
+	"github.com/anaskhan96/soup"
 )
 
 func ParseUnderScore(str string) string{
@@ -27,4 +28,21 @@ func ParseData(data *string){
 	re3 := regexp.MustCompile(`\[([^\[\]]*)\]`)
 	*data = re3.ReplaceAllLiteralString(*data, "")
 	
+}
+
+func ParsePage(root *soup.Root) string{
+
+	var TextList []string
+
+	for _, v := range root.FindAll("p"){
+		txt := strings.TrimSpace(v.FullText())
+		if !(txt=="" || len(strings.Split(txt," ")) < 20){
+			TextList = append(TextList,v.FullText())
+		}
+	}
+	if len(TextList)==0{
+		return ""
+	}
+	return TextList[0]
+
 }
