@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/fatih/color"
 	"github.com/anaskhan96/soup"
 	"fmt"
 	"strings"
@@ -9,6 +10,11 @@ import (
 	"github.com/icelain/cyclo/candy"
 	"github.com/icelain/cyclo/parser"
 )
+
+func ErrOut(errProp string){
+	color.Red("No result found for: "+errProp)
+	os.Exit(0)
+}
 
 var (
 	base = "https://en.wikipedia.org/wiki/"
@@ -30,15 +36,11 @@ func main(){
 
 	root := soup.HTMLParse(s)
 
-	var TextList []string
-	for _, v := range root.FindAll("p"){
-		if !(strings.TrimSpace(v.FullText())==""){
-			TextList = append(TextList,v.FullText())
-		}
+	f := parser.ParsePage(&root)
+
+	if f==""{
+		ErrOut(os.Args[1])
 	}
-	f := TextList[0]
-
-
 
 	parser.ParseData(&f)
 	parser.RefParse(&f)
