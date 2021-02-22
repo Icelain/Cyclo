@@ -40,6 +40,7 @@ func ParsePage(root *soup.Root) string{
 		txt := strings.TrimSpace(v.FullText())
 		if !(txt=="" || len(strings.Split(txt," ")) < 20){
 			TextList = append(TextList,v.FullText())
+			break
 		}
 	}
 	if len(TextList)==0{
