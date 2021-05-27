@@ -12,7 +12,7 @@ import (
 )
 
 func ErrOut(errProp string) {
-	color.Red("No result found for: " + errProp)
+	color.Red("No result found for:" + errProp)
 	os.Exit(0)
 }
 
